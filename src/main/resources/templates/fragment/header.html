@@ -17,8 +17,9 @@
 
 
     <div class="col-md-3 text-end"  sec:authorize="isAuthenticated()">
-        <a href="" th:href="@{/member/info}" class="btn btn-outline-primary me-2"
+        <a href="" class="btn btn-outline-primary me-2"
            th:text="${#authentication.principal.loggedMember.userName}"
+           th:href="@{/member/mypage/{userId}(userId=${#authentication.principal.loggedMember.userId})}"
         >정형돈</a>
     </div>
 </header>

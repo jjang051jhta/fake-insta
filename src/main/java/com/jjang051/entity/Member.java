@@ -1,6 +1,7 @@
 package com.jjang051.entity;
 
 import com.jjang051.constant.Role;
+import com.jjang051.dto.MemberDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -54,5 +55,17 @@ public class Member extends BaseEntity {
         this.profileImageUrl = profileImageUrl;
         this.role = role;
         this.comments = comments;
+    }
+
+
+    public static MemberDto fromEntity(Member member) {
+        return MemberDto.builder()
+                .userId(member.getUserId())
+                .userName(member.getUserName())
+                .email(member.getEmail())
+                .comments(member.getComments())
+                .description(member.getDescription())
+                .mbti(member.getMbti())
+                .build();
     }
 }

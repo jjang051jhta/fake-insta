@@ -1,5 +1,6 @@
 package com.jjang051.controller;
 
+import com.jjang051.dto.MemberDto;
 import com.jjang051.dto.SigninDto;
 import com.jjang051.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +23,11 @@ public class MemberController {
         return "member/signin";
     }
 
-    @GetMapping("/mypage")
-    public String mypage(Model model) {
-        MemberInfoDto memberInfoDto = memberService.getInfoMember();
+    @GetMapping("/mypage/{userId}")
+    public String mypage(Model model,@PathVariable String userId) {
+        //id를 가지고 찾은 정보를 넘겨줘야함...
+        MemberDto memberInfoDto = memberService.getInfoMember(userId);
+        //repository에서 찾아서 dto로 바꿔서 front전달
         model.addAttribute("memberInfoDto",memberInfoDto);
         return "member/mypage";
     }
@@ -41,10 +44,7 @@ public class MemberController {
         return "member/login";
     }
 
-    @GetMapping("/mypage/{id}")
-    public String mypage(@PathVariable int id) {
-        return "mypage"+id;
-    }
+
 
 
 
