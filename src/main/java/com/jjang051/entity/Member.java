@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+    private Integer id;
 
     @Column(unique = true,nullable = false)
     private String userId;
@@ -40,5 +41,9 @@ public class Member extends BaseEntity {
     @Column(name="role")
     @Enumerated(EnumType.STRING)  //Role은 상수이다.
     private Role role;
+
+    //연관관계 설정
+    @OneToMany(mappedBy = "writer")
+    private List<Comment> comments;
 
 }
