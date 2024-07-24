@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
-<div layout:fragment="content" class="main">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head02('SIGNIN','alien02.png')}"></head>
+<header th:replace="~{fragment/header}"></header>
+<div class="container">
     <div class="container justify-content-center d-flex">
         <div class="col-4">
             <h2>LOGIN</h2>
-            <form method="post" action="/auth/login" th:action="@{/templates/member/login}">
+            <form method="post" action="/member/login" th:action="@{/member/login}">
                 <div class="mb-3">
                     <label for="userId" class="form-label">userId</label>
                     <input type="text" class="form-control" placeholder="id" id="userId"
@@ -21,7 +21,6 @@
                     <button class="btn btn-primary" id="btnSubmit">LOGIN</button>
                     <a class="btn btn-primary mt-2" href="/auth/join">JOIN</a>
                     <a class="btn btn-primary mt-2" href="/mail/find_password">SEARCH PASSWORD</a>
-
                 </div>
             </form>
             <hr>

@@ -25,13 +25,13 @@ public class MemberController {
     @PostMapping("/signin")
     public String joinProcess(@ModelAttribute SigninDto signinDto) {
         memberService.singin(signinDto); //회원가입되게
-        return "member/signin";
+        return "redirect:/member/login";
     }
 
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "member/login";
     }
 
     @GetMapping("/mypage/{id}")

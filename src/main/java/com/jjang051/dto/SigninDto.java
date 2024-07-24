@@ -31,6 +31,7 @@ public class SigninDto {
         this.password = password;
         this.email = email;
     }
+    // 시큐리티 적용해서 패스워드 암호화해서 올려보기
 
     public static Member toEntity(SigninDto signinDto) {
         return Member.builder()
