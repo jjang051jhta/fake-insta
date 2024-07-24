@@ -2,10 +2,7 @@ package com.jjang051.entity;
 
 import com.jjang051.constant.Role;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,4 +43,16 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "writer")
     private List<Comment> comments;
 
+    @Builder
+    public Member(String userId, String userName, String password, String email, String mbti, String description, String profileImageUrl, Role role, List<Comment> comments) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.mbti = mbti;
+        this.description = description;
+        this.profileImageUrl = profileImageUrl;
+        this.role = role;
+        this.comments = comments;
+    }
 }
