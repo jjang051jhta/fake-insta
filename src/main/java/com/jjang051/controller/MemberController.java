@@ -22,6 +22,13 @@ public class MemberController {
         return "member/signin";
     }
 
+    @GetMapping("/mypage")
+    public String mypage(Model model) {
+        MemberInfoDto memberInfoDto = memberService.getInfoMember();
+        model.addAttribute("memberInfoDto",memberInfoDto);
+        return "member/mypage";
+    }
+
     @PostMapping("/signin")
     public String joinProcess(@ModelAttribute SigninDto signinDto) {
         memberService.singin(signinDto); //회원가입되게
