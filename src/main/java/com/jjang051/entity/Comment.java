@@ -15,6 +15,7 @@ public class Comment extends BaseEntity {
     //멤버와의 연관관계 설정
 
     @ManyToOne
-    @JoinColumn(name="writerId")
+    //@JoinColumn(name="writerId")
+    @JoinColumn(name = "writerId",referencedColumnName = "userId")
     private Member writer;
 }
