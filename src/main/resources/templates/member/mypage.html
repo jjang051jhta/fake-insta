@@ -8,11 +8,16 @@
             <h2>MYAPGE</h2>
             <div class="mypage-header mt-5">
                 <div class="profile">
-                    <img th:src="@{/images/layout/profile.png}" id="memberProfileImage">
+                    <th:block th:if="${memberInfoDto.profileImageUrl==null}">
+                        <img th:src="@{/images/layout/profile.png}" id="memberProfileImage">
+                    </th:block>
+                    <th:block  th:unless="${memberInfoDto.profileImageUrl==null}">
+                        <img th:src="@{|/upload/${memberInfoDto.profileImageUrl}|}" id="memberProfileImage">
+                    </th:block>
                 </div>
                 <form method="post" action="" enctype="multipart/form-data"
                       id="profileImageForm">
-                    <input th:type="file" name="profileImageUrl" id="profileSelect">
+                    <input th:type="file" name="profileImageUrl" id="profileSelect" style="display: none">
                 </form>
                 <div class="info">
                 </div>

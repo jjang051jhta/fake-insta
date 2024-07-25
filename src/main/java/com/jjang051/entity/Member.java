@@ -67,6 +67,7 @@ public class Member extends BaseEntity {
                 .email(member.getEmail())
                 .comments(member.getComments())
                 .description(member.getDescription())
+                .profileImageUrl(member.getProfileImageUrl())
                 .mbti(member.getMbti())
                 .build();
     }
