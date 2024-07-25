@@ -3,6 +3,7 @@ package com.jjang051.controller;
 import com.jjang051.dto.CustomUserDetails;
 import com.jjang051.dto.MemberDto;
 import com.jjang051.dto.SigninDto;
+import com.jjang051.entity.Member;
 import com.jjang051.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,9 @@ public class MemberController {
     @PostMapping("/modify")
     public String modify(MemberDto memberDto, String userId,
                          @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        memberService.modifyMemberSetter(memberDto, customUserDetails.getLoggedMember().getUserId());
+        Member member =  memberService.modifyMember(memberDto, customUserDetails.getLoggedMember().getUserId());
+        customUserDetails.setLoggedMember(member);
+        //내용바로 바뀌게...
         return "redirect:/";
     }
 

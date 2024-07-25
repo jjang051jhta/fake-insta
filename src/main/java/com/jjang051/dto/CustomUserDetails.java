@@ -3,6 +3,7 @@ package com.jjang051.dto;
 import com.jjang051.entity.Member;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,10 +12,13 @@ import java.util.Collection;
 
 @RequiredArgsConstructor
 @Getter
+@Setter
 public class CustomUserDetails implements UserDetails {
-    private final Member loggedMember;
+    private Member loggedMember;
 
-
+    public CustomUserDetails(Member loggedMember) {
+        this.loggedMember = loggedMember;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
