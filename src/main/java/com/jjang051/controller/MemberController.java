@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +49,7 @@ public class MemberController {
     }
 
     @PostMapping("/modify")
-    public String modify(MemberDto memberDto, String userId,
+        public String modify(MemberDto memberDto, String userId,
                          @AuthenticationPrincipal CustomUserDetails customUserDetails) {
         Member member =  memberService.modifyMember(memberDto, customUserDetails.getLoggedMember().getUserId());
         customUserDetails.setLoggedMember(member);

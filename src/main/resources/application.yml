@@ -3,7 +3,10 @@ server:
     session:
       timeout: 1800
       #tracking-modes: cookie
-
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
 
 spring:
   application:
@@ -37,6 +40,8 @@ spring:
         one-indexed-parameters: true
 
           #글로벌 서비스를 하는곳은 여기에만 등록하면 된다.
+
+
 
 
 pagination:

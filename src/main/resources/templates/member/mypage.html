@@ -10,7 +10,8 @@
                 <div class="profile">
                     <img th:src="@{/images/layout/profile.png}" id="memberProfileImage">
                 </div>
-                <form method="post" action="" enctype="multipart/form-data" id="profileImageForm" style="display: none">
+                <form method="post" action="" enctype="multipart/form-data"
+                      id="profileImageForm">
                     <input th:type="file" name="profileImageUrl" id="profileSelect">
                 </form>
                 <div class="info">
@@ -19,4 +20,26 @@
         </div>
     </div>
 </div>
+<script>
+    $(".profile").on("click",function() {
+        //이벤트 위임
+        $("#profileSelect").trigger("click");
+    })
+    $("#profileSelect").on("change",function(e){
+        const profileImageForm = $("#profileImageForm")[0];
+        const formData = new FormData(profileImageForm);
+        $.ajax({
+            url:"/api/member/jjang051/profileImageUrl",
+            data:formData,
+            contentType:false,
+            processData:false,
+            method:"put",
+            enctype:"multipart/form-data",
+            success:function(res){
+                console.log(res);
+            }
+        })
+    })
+
+</script>
 </html>
