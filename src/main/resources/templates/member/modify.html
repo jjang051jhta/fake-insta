@@ -6,12 +6,11 @@
     <div class="container justify-content-center d-flex">
         <div class="col-4">
             <h2>MODIFY</h2>
-            <form method="post" action="/member/login"
-                  th:action="">
+            <form method="post" action="/member/login" th:action="@{/member/modify}">
                 <div class="mb-3">
                     <label for="userId" class="form-label">ID</label>
-                    <input type="text" class="form-control" placeholder="id" id="userId"
-                            readonly>
+                    <input type="text" class="form-control" placeholder="id" id="userId"    th:value="${memberInfoDto.userId}"
+                           readonly>
 
                 </div>
                 <!--                <div class="mb-3">-->
@@ -20,24 +19,24 @@
                 <!--                </div>-->
                 <div class="mb-3">
                     <label for="email" class="form-label">EMAIL</label>
-                    <input type="text" class="form-control" placeholder="email" id="email" name="email" >
+                    <input type="text" class="form-control" placeholder="email" id="email" name="email" th:value="${memberInfoDto.email}" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">NAME</label>
-                    <input type="text" class="form-control" placeholder="name" id="name" name="name"  >
+                    <input type="text" class="form-control" placeholder="name" id="name" name="userName"   th:value="${memberInfoDto.userName}">
                 </div>
                 <div class="mb-3">
                     <label for="mbti" class="form-label">MBTI</label>
-                    <input type="text" class="form-control" placeholder="mbti" id="mbti" name="mbti"  >
+                    <input type="text" class="form-control" placeholder="mbti" id="mbti" name="mbti"     th:value="${memberInfoDto.mbti}">
                 </div>
+                <!--                <div class="mb-3">-->
+                <!--                    <label for="phone" class="form-label">PHONE</label>-->
+                <!--                    <input type="text" class="form-control" placeholder="phone" id="phone" name="phone"  >-->
+                <!--                </div>-->
                 <div class="mb-3">
-                    <label for="phone" class="form-label">PHONE</label>
-                    <input type="text" class="form-control" placeholder="phone" id="phone" name="phone"  >
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">DESCRIPTION</label>
-                    <textarea class="form-control" placeholder="description" id="description" name="description"
-                              ></textarea>
+                    <label for="description" class="form-label">DESCRIPTION</label>
+                    <textarea class="form-control" placeholder="description" id="description" name="description" th:text="${memberInfoDto.description}"
+                    ></textarea>
                 </div>
                 <div class="mt-5 d-grid">
                     <button class="btn btn-primary" id="btnSubmit">MODIFY CONFIRM</button>
