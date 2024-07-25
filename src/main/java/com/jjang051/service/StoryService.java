@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -33,5 +34,10 @@ public class StoryService {
         }
         Story story= storyUploadDto.toEntity(imageFileName,customUserDetails.getLoggedMember());
         storyRepository.save(story);
+    }
+
+    public List<Story> loadStory(Integer id) {
+        List<Story> stroyList = storyRepository.findAll();
+        return stroyList;
     }
 }

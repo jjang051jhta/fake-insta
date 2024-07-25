@@ -1,13 +1,13 @@
 package com.jjang051.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Story extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,6 +25,7 @@ public class Story extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="member_id")
+    @JsonIgnoreProperties({"stories"})  //json만들고 싶지 않을때...
     private Member member;
 
     @Builder

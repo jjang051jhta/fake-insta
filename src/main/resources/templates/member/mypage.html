@@ -60,6 +60,12 @@
             }
         })
     })
-
+    $.ajax({
+        url:"/api/story",
+        method: "get",
+        success:function(res) {
+            console.log(res);
+        }
+    })
 </script>
 </html>
