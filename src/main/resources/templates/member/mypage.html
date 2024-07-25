@@ -26,6 +26,9 @@
         $("#profileSelect").trigger("click");
     })
     $("#profileSelect").on("change",function(e){
+        console.log(e);
+        const file = e.target.files[0];
+
         const profileImageForm = $("#profileImageForm")[0];
         const formData = new FormData(profileImageForm);
         $.ajax({
@@ -37,6 +40,16 @@
             enctype:"multipart/form-data",
             success:function(res){
                 console.log(res);
+                const fileReader = new FileReader();
+                fileReader.onload=function() {
+                    $("#memberProfileImage").attr("src",
+                        "/upload/"+res.memberInfo.profileImageUrl
+                    )
+                }
+                fileReader.readAsDataURL(file);
+            },
+            error:function(err) {
+                console.log(err);
             }
         })
     })

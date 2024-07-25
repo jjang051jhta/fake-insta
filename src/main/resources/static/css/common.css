@@ -17,3 +17,8 @@ background-size: cover;
     transform: translateX(-50%);
     bottom: 100px;
 }
+#memberProfileImage {
+    width:100px;
+    height: 100px;
+    border-radius: 100px;
+}
