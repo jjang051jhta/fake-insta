@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
+//@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  //jpa에서 가져다 쓸때 필요함
 @ToString(exclude = {"writer"})
 //@ToString(of = {"writer"})
@@ -45,7 +46,8 @@ public class Member extends BaseEntity {
     private List<Comment> comments;
 
     @Builder
-    public Member(String userId, String userName, String password, String email, String mbti, String description, String profileImageUrl, Role role, List<Comment> comments) {
+    public Member(Integer id,String userId, String userName, String password, String email, String mbti, String description, String profileImageUrl, Role role, List<Comment> comments) {
+        this.id=id;
         this.userId = userId;
         this.userName = userName;
         this.password = password;

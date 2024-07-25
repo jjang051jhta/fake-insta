@@ -6,7 +6,7 @@
     <div class="container justify-content-center d-flex">
         <div class="col-4">
             <h2>MODIFY</h2>
-            <form method="post" action="/member/login">
+            <form method="post" action="/member/login" th:action="@{/member/modify}">
                 <div class="mb-3">
                     <label for="userId" class="form-label">ID</label>
                     <input type="text" class="form-control" placeholder="id" id="userId"    th:value="${memberInfoDto.userId}"

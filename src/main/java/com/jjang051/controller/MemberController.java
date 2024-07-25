@@ -1,10 +1,12 @@
 package com.jjang051.controller;
 
+import com.jjang051.dto.CustomUserDetails;
 import com.jjang051.dto.MemberDto;
 import com.jjang051.dto.SigninDto;
 import com.jjang051.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +46,12 @@ public class MemberController {
         return "member/login";
     }
 
-
+    @PostMapping("/modify")
+    public String modify(MemberDto memberDto, String userId,
+                         @AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        memberService.modifyMember(memberDto, customUserDetails.getLoggedMember().getUserId());
+        return "redirect:/";
+    }
 
 
 
