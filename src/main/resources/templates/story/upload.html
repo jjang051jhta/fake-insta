@@ -6,7 +6,8 @@
     <div class="container justify-content-center d-flex">
         <div class="col-4">
             <h2>STORY</h2>
-            <form method="post" action="/image/upload"  enctype="multipart/form-data">
+            <form method="post" action="/image/upload"
+                  th:action="@{/story/upload}"  enctype="multipart/form-data">
                 <div class="mb-3">
                     <div class="mb-3">
                         <label for="file" class="form-label">STORY UPLOAD</label>

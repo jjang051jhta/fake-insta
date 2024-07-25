@@ -1,5 +1,6 @@
 package com.jjang051.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jjang051.constant.Role;
 import com.jjang051.dto.MemberDto;
 import jakarta.persistence.*;
@@ -44,6 +45,14 @@ public class Member extends BaseEntity {
     //연관관계 설정
     @OneToMany(mappedBy = "writer")
     private List<Comment> comments;
+
+    //api
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"member"}) //api만들때 양방향매핑이 잡혀있을때 서로 참조 하다보면 무한루프에 빠지게 된다.
+    private List<Story> stories;
+
+
+
 
     @Builder
     public Member(Integer id,String userId, String userName, String password, String email, String mbti, String description, String profileImageUrl, Role role, List<Comment> comments) {

@@ -26,6 +26,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 public class MemberService {
+
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
