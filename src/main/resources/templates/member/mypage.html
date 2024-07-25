@@ -3,8 +3,8 @@
 <head th:replace="~{fragment/head :: head02('SIGNIN','alien02.png')}"></head>
 <header th:replace="~{fragment/header}"></header>
 <div class="container">
-    <div class="container justify-content-center d-flex">
-        <div class="col-4">
+    <div class="container">
+        <div>
             <h2>MYAPGE</h2>
             <div class="mypage-header mt-5">
                 <div class="profile">
@@ -25,7 +25,8 @@
         </div>
     </div>
 </div>
-<script>
+<script th:inline="javascript">
+    const userId = [[${#authentication.principal.loggedMember.userId}]];
     $(".profile").on("click",function() {
         //이벤트 위임
         $("#profileSelect").trigger("click");
@@ -37,7 +38,7 @@
         const profileImageForm = $("#profileImageForm")[0];
         const formData = new FormData(profileImageForm);
         $.ajax({
-            url:"/api/member/jjang051/profileImageUrl",
+            url:`/api/member/${userId}/profileImageUrl`,
             data:formData,
             contentType:false,
             processData:false,
