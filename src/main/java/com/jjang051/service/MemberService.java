@@ -112,6 +112,7 @@ public class MemberService {
         String originalFileName = profileImageUrl.getOriginalFilename();
         UUID uuid = UUID.randomUUID();
         String imageFileName = uuid+"_"+profileImageUrl.getOriginalFilename();
+        log.info("imageFileName===={}",imageFileName);
 
         Path imageFilePath = Paths.get(uploadFolder+imageFileName);
         File originalFile = new File(uploadFolder+imageFileName);
@@ -121,7 +122,13 @@ public class MemberService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        Optional<Member> optionalMember = memberRepository.findByUserId(userId);
+        if(optionalMember.isPresent()) {
+            Member member = optionalMember.get();
+            member.setProfileImageUrl(imageFileName);
+            return memberRepository.save(member);
 
+        }
+        throw new RuntimeException("파일업로드에 실패하였습니다.");
     }
 }

@@ -33,7 +33,7 @@ public class MemberApiController {
         resultMap.put("isUpload","ok");
         //resultMap.put("memberInfo",memberInfo)
         return resultMap;
-        //img src="/upload/fjkdjksf.jpg"
+
     }
 
 
