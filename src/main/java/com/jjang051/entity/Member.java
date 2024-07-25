@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
-//@Setter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)  //jpa에서 가져다 쓸때 필요함
 @ToString(exclude = {"writer"})
 //@ToString(of = {"writer"})
@@ -69,5 +69,17 @@ public class Member extends BaseEntity {
                 .description(member.getDescription())
                 .mbti(member.getMbti())
                 .build();
+    }
+    //setter  속성
+    public void updateMember(MemberDto memberDto) {
+        //this.userId = memberDto.getUserId();
+        this.userName = memberDto.getUserName();
+        //this.password = memberDto.getPassword();
+        this.email = memberDto.getEmail();
+        this.mbti = mbti;
+        this.description = memberDto.getDescription();
+        this.profileImageUrl = memberDto.getProfileImageUrl();
+        this.role = memberDto.getRole();
+        this.comments = memberDto.getComments();
     }
 }

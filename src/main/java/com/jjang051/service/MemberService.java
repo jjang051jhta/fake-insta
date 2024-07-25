@@ -34,16 +34,30 @@ public class MemberService {
         return null;
     }
 
-    public void modifyMember(MemberDto memberDto, String userId) {
-        // update
-        // 1. id를 가지고 찾는다.
-        // 2. 속성을 바꾸고
-        // 3. save  update
+    public Member modifyMemberSetter(MemberDto memberDto, String userId) {
+
         Optional<Member> optionalMember = memberRepository.findByUserId(userId);
         log.info("userId==={}",userId);
         if(optionalMember.isPresent()) {
             Member findMember = optionalMember.get();
-            //dirty checking 시 entity에 선언된 @Id가지고 같은지 다른지 체킹한다.
+
+
+            findMember.setMbti(memberDto.getMbti());
+            findMember.setEmail(memberDto.getEmail());
+            findMember.setDescription(memberDto.getDescription());
+            findMember.setUserName(memberDto.getUserName());
+            return memberRepository.save(findMember);
+        } else {
+            throw new RuntimeException("찾는 사람이 없습니다.");
+        }
+    }
+    public Member modifyMemberBuilder(MemberDto memberDto, String userId) {
+
+        Optional<Member> optionalMember = memberRepository.findByUserId(userId);
+        log.info("userId==={}",userId);
+        if(optionalMember.isPresent()) {
+            Member findMember = optionalMember.get();
+            memberRepository.save(findMember);
             Member saveMember =
                     Member.builder()
                     .id(findMember.getId())
@@ -54,11 +68,25 @@ public class MemberService {
                     .email(memberDto.getEmail())
                     .description(memberDto.getDescription())
                     .build();
-//            findMember.setMbti(memberDto.getMbti());
-//            findMember.setEmail(memberDto.getEmail());
-//            findMember.setDescription(memberDto.getDescription());
-//            findMember.setUserName(memberDto.getUserName());
-            memberRepository.save(saveMember);
+
+
+            return memberRepository.save(saveMember);
+        } else {
+            throw new RuntimeException("찾는 사람이 없습니다.");
+        }
+    }
+
+    public Member modifyMember(MemberDto memberDto, String userId) {
+        // update
+        // 1. id를 가지고 찾는다.
+        // 2. 속성을 바꾸고
+        // 3. save  update
+        Optional<Member> optionalMember = memberRepository.findByUserId(userId);
+        log.info("userId==={}",userId);
+        if(optionalMember.isPresent()) {
+            Member findMember = optionalMember.get();
+            findMember.updateMember(memberDto); //속성을 바꿔준다.
+            return memberRepository.save(findMember);  //update가 나간다.
         } else {
             throw new RuntimeException("찾는 사람이 없습니다.");
         }

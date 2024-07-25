@@ -49,7 +49,7 @@ public class MemberController {
     @PostMapping("/modify")
     public String modify(MemberDto memberDto, String userId,
                          @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        memberService.modifyMember(memberDto, customUserDetails.getLoggedMember().getUserId());
+        memberService.modifyMemberSetter(memberDto, customUserDetails.getLoggedMember().getUserId());
         return "redirect:/";
     }
 
