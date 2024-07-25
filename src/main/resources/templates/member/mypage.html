@@ -8,29 +8,12 @@
             <h2>MYAPGE</h2>
             <div class="mypage-header mt-5">
                 <div class="profile">
-                        <img src="/images/user.png" id="memberProfileImage">
+                    <img th:src="@{/images/layout/profile.png}" id="memberProfileImage">
                 </div>
                 <form method="post" action="" enctype="multipart/form-data" id="profileImageForm" style="display: none">
                     <input th:type="file" name="profileImageUrl" id="profileSelect">
                 </form>
                 <div class="info">
-                </div>
-                <div class="story-list mypage-story-list">
-                    <ul>
-                        <th:block th:each="item:${memberInfo.member.imageList}">
-                            <li>
-                                <a href="" th:href="@{|/image/detail/${item.id}|}">
-                                    <img src="/images/500.png" th:src="@{|/upload/${item.imgUrl}|}">
-                                    <div class="overlay">
-                                    <span class="icon">
-                                        <i class="bi bi-balloon-heart-fill text-white fs-3"></i>
-                                    </span>
-                                        <span class="text-white fs-3" th:text="${item.likeTotal}"></span>
-                                    </div>
-                                </a>
-                            </li>
-                        </th:block>
-                    </ul>
                 </div>
             </div>
         </div>
