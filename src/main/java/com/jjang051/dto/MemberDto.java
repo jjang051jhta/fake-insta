@@ -3,6 +3,7 @@ package com.jjang051.dto;
 import com.jjang051.constant.Role;
 import com.jjang051.entity.Comment;
 import com.jjang051.entity.Member;
+import com.jjang051.entity.Story;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,4 +25,5 @@ public class MemberDto {
     private String profileImageUrl;
     private Role role;
     private List<Comment> comments;
+    private List<Story> stories;
 }

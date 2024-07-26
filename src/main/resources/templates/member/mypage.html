@@ -25,7 +25,7 @@
             </div>
             <div class="story-list mypage-story-list mt-5">
                 <ul>
-                    <th:block th:each="item:${storyList}">
+                    <th:block th:each="item:${memberInfoDto.stories}">
                         <li>
                             <a href="" th:href="@{|/story/detail/${item.id}|}">
                                 <img src="/images/500.png" th:src="@{|/upload/${item.imgUrl}|}">

@@ -43,6 +43,7 @@ public class MemberController {
         //로그인한 사용자만 보여주기...
         List<Story> storyList =
                 storyService.loadStory(userId);
+
         MemberDto memberInfoDto = memberService.getInfoMember(userId);
         //repository에서 찾아서 dto로 바꿔서 front전달
         model.addAttribute("memberInfoDto",memberInfoDto);
