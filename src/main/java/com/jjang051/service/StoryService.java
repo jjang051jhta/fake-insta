@@ -36,8 +36,15 @@ public class StoryService {
         storyRepository.save(story);
     }
 
-    public List<Story> loadStory(Integer id) {
-        List<Story> stroyList = storyRepository.findAll();
-        return stroyList;
+    public List<Story> loadStory(int id) {
+        //오버라이딩
+        List<Story> storyList = storyRepository.findAllId(id);
+        return storyList;
     }
+    public List<Story> loadStory(String userId) {
+        //오버라이딩
+        List<Story> storyList = storyRepository.findAllUserId(userId);
+        return storyList;
+    }
+
 }

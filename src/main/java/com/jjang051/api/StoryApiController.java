@@ -27,10 +27,14 @@ public class StoryApiController {
             ) {
         //내가 올린 스토리를 들고 온다.
         List<Story> storyList =
-                storyService.loadStory(customUserDetails.getLoggedMember().getId());
+                storyService.loadStory(
+                        customUserDetails.getLoggedMember().getId()
+                );
+
         Map<String,Object> resultMap = new HashMap<>();
         resultMap.put("storyList",storyList);
         return ResponseEntity.status(HttpStatus.OK).body(resultMap);
         // 내가 쓴 것만 출력되게....
     }
+
 }
